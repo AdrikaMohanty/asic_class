@@ -6,7 +6,7 @@ This repository guides you to complete the ASIC flow from scratch .
 The objective of VLSI physical design for ASIC is to transform a digital circuit logic representation into a physical layout meeting the power,performance,area and manufacturability requirements .
 
 
-* If you need to know about basic instructions you can read through them here , the daywise labs are in thier respective folders , the commands needed for them along with their explanations are also in those folders. The pre-requisites for installation will be at the end of the readme file , feel free to scroll down and install them !*
+**If you need to know about basic instructions you can read through them here , the daywise labs are in thier respective folders , the commands needed for them along with their explanations are also in those folders. The pre-requisites for installation will be at the end of the readme file , feel free to scroll down and install them!**
 
 
 ## Table of contents 
@@ -111,20 +111,16 @@ after using the spike debugger we can see line by line execution of the code :
 ```until pc 0 100b0```: tells until where it should execute and stop
 after that press enter for line by line execution .
 Here I have showed with the sp values :
-before execution sp values :
 
 
 ![bfr_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fba0a340-45ac-414f-ac34-837c1e055aac)
 
-
-
-
-after execution sp values :
-
+Before execution sp values:
 
 
 ![after_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5d96715c-2612-45bd-a931-634cb75eccc4)
 
+After execution sp values :
 
 
 
