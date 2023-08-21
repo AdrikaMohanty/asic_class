@@ -11,7 +11,7 @@ The objective of VLSI physical design for ASIC is to transform a digital circuit
 
 ## Table of contents 
 
-###DAY1
+### DAY1
 ********
 *Introduction to RISCV ISA and GNU Compiler Toolchain*
 
@@ -82,16 +82,15 @@ Compile it using C compiler
 
 Compiling using riscv compiler :
 
-```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c
-```
+```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c```
+
 ```O<number>```: refers to the level of optimization 
 ```-mabi```:specifies the ABI to be used during code generation according to the requirements 
 ```-march```:specifies target architecture 
 
 *To view the disassembled ALP code*:
 
-```riscv64-unknown-elf-objdump -d sum1.o 
-```
+```riscv64-unknown-elf-objdump -d sum1.o```
 
 use the command ```riscv64-unknown-elf-objdump -d 1_to_N.o | less```
 use /instance to search for instance 
