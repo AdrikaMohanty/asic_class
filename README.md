@@ -81,11 +81,10 @@ Compile it using C compiler
 
 
 Compiling using riscv compiler :
-
-```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c
 ```
+riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c
 
-
+```
 
 ```O<number>```: refers to the level of optimization 
 ```-mabi```:specifies the ABI to be used during code generation according to the requirements 
@@ -113,14 +112,24 @@ after that press enter for line by line execution .
 Here I have showed with the sp values :
 
 
+Before execution , sp values:
+
+
+
+
 ![bfr_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fba0a340-45ac-414f-ac34-837c1e055aac)
 
-Before execution sp values:
+
+
+
+After execution sp values :
+
+
 
 
 ![after_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5d96715c-2612-45bd-a931-634cb75eccc4)
 
-After execution sp values :
+
 
 
 
