@@ -113,30 +113,7 @@ after using the spike debugger we can see line by line execution of the code :
 after that press enter for line by line execution .
 Here I have showed with the sp values :
 
-
-
-
-
-Before execution , sp values:
-
-
-
-
-![bfr_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fba0a340-45ac-414f-ac34-837c1e055aac)
-
-
-
-
-
-
-
-After execution sp values :
-
-
-
-
-![after_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5d96715c-2612-45bd-a931-634cb75eccc4)
-
+![bfr_aftr_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/b70770eb-d862-4332-8345-f5d038740293)
 
 
 
