@@ -22,31 +22,31 @@ The objective of VLSI physical design for ASIC is to transform a digital circuit
 Basic keywords you need to know before proceeding :
 
 * *ISA*
- - An ISA or the Instruction Set Architecture is part of the abstract model of the computer that defines how the CPU is controlled by the software . It acts as an interface between the hardware and the software,specifying both what the processor is capable of doing as well how it gets done.
+   - An ISA or the Instruction Set Architecture is part of the abstract model of the computer that defines how the CPU is controlled by the software . It acts as an interface between the hardware and the software,specifying both what the processor is capable of doing as well how it gets done.
  
  
 * *RISC-V*
- - RISC-V is a versatile and open ISA that promotes collaboration and innovation in processor design and development.
+   - RISC-V is a versatile and open ISA that promotes collaboration and innovation in processor design and development.
   
 
 * *Compiler*
- - A compiler is a software tool  that translates high-level programming code into machine code that can be executed directly by a computer's hardware .
+   - A compiler is a software tool  that translates high-level programming code into machine code that can be executed directly by a computer's hardware .
  
  
 * *Assembler*
- - A program or tool that translates assembly language code into machine code that can be executed by a computer's cpu.
+   - A program or tool that translates assembly language code into machine code that can be executed by a computer's cpu.
  
 * *ALP*
- - Assembly language is a low level programming lnguage that is closely related to the architecture of specificcomputer's cpu .
+   - Assembly language is a low level programming lnguage that is closely related to the architecture of specificcomputer's cpu .
  
  
 * *HDL*
- -Hardware Description language used for designing and describing digital hardware circuits . 
- - Eg: Verilog , System Verilog,VHDL
+   - Hardware Description language used for designing and describing digital hardware circuits . 
+    - Eg: Verilog , System Verilog,VHDL
  
  
 * *GDS*
- - Graphic data system: GDSII files contain information about the geometric shapes, layers, masks, and other essential details that make up the physical layout of a chip.
+   - Graphic data system: GDSII files contain information about the geometric shapes, layers, masks, and other essential details that make up the physical layout of a chip.
  
  
  
@@ -91,9 +91,9 @@ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c
 *********
 
 
-```O<number>```: refers to the level of optimization 
-```-mabi```:specifies the ABI to be used during code generation according to the requirements 
-```-march```:specifies target architecture 
++ ```O<number>```: refers to the level of optimization 
++ ```-mabi```:  specifies the ABI to be used during code generation according to the requirements 
++ ```-march```:  specifies target architecture 
 
 *To view the disassembled ALP code*:
 
