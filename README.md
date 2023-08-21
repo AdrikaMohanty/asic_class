@@ -82,7 +82,10 @@ Compile it using C compiler
 
 Compiling using riscv compiler :
 
-```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c```
+```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1.o sum1.c
+```
+
+
 
 ```O<number>```: refers to the level of optimization 
 ```-mabi```:specifies the ABI to be used during code generation according to the requirements 
@@ -92,10 +95,10 @@ Compiling using riscv compiler :
 
 ```riscv64-unknown-elf-objdump -d sum1.o```
 
-use the command ```riscv64-unknown-elf-objdump -d 1_to_N.o | less```
-use /instance to search for instance 
-press enter 
-* Main when used O1 optimisation*
+* use the command ```riscv64-unknown-elf-objdump -d 1_to_N.o | less```
+* use /instance to search for instance 
+* press enter 
+  *Main when used O1 optimisation*
 
 ![O1opt](https://github.com/AdrikaMohanty/asic_class/assets/84654826/c36f002f-05f4-4d8c-8a43-c7ed45b3b08b)
 
@@ -107,11 +110,19 @@ after using the spike debugger we can see line by line execution of the code :
 
 ```until pc 0 100b0```: tells until where it should execute and stop
 after that press enter for line by line execution .
-Here i have showed with the sp values :
+Here I have showed with the sp values :
 before execution sp values :
+
+
 ![bfr_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fba0a340-45ac-414f-ac34-837c1e055aac)
 
+
+
+
 after execution sp values :
+
+
+
 ![after_sp](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5d96715c-2612-45bd-a931-634cb75eccc4)
 
 
