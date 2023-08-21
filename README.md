@@ -129,4 +129,19 @@ Here I have showed with the sp values :
 
 
 </details>
+
+<details>
+ <summary>DAY2</summary>
+
+ ### DAY2
+
+
+## Simulation of a C program using ABI function call and execution 
+**********
+![sum_cust](https://github.com/AdrikaMohanty/asic_class/assets/84654826/40a47d17-36a8-4434-93ea-cafc90954cd7)
+
+
+ ![sum_cust_obj](https://github.com/AdrikaMohanty/asic_class/assets/84654826/55b7e09c-9e8e-4a8d-98ce-dfb9681644d5)
+
+</details>
  
