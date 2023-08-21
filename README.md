@@ -10,6 +10,9 @@ The objective of VLSI physical design for ASIC is to transform a digital circuit
 
 
 ## Table of contents 
+<details>
+ <summary> DAY1 </summary>
+
 
 ### DAY1
 ********
@@ -118,8 +121,12 @@ Here I have showed with the sp values :
 
 
 
+## 2. Write a program to display the max and min 64 bit signed number and max 64 bit unsigned numbers:
 
 
 
+![Screenshot from 2023-08-21 15-19-41](https://github.com/AdrikaMohanty/asic_class/assets/84654826/b24b9f68-587f-4fb5-8cab-11938652baec)
 
+
+</details>
  
