@@ -187,3 +187,16 @@ There are 47 base instructions present in RISC-V ISA
 
 </details>
  
+________________________________
+____________________________________
+
+# RTL Design using Verilog with SKY130 technology
+
+_______________
+
+<details>
+ <summary># DAY1 </summary>
+
+ 
+</details>
+
