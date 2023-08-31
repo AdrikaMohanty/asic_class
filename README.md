@@ -196,7 +196,139 @@ _______________
 
 <details>
  <summary>DAY1 </summary>
+ Intoduction to iverilog , Design and testbench using verilog 
+
+ Design : Verilog code that is intended to functionally meet the required specifications 
+ Test bench : Setup to apply the stimulus to design , basically to verify if the design is working properly .
+ 
+ 
+ How the testbench works :
+
+ ![Screenshot from 2023-08-31 21-03-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/01a484aa-5844-47ac-a553-1d96757e9e2a)
+
+Output of simulator is a VCD (value change dump ) 
+To view the waveform we use gtk wave in which we can observe for the  change in input how the output changes 
+
+
+ ![Screenshot from 2023-08-31 21-08-20](https://github.com/AdrikaMohanty/asic_class/assets/84654826/58c02483-2245-45b0-a46f-caa4bd19472a)
+
+
+
 
  
+### LAB 1:
+
+Installing prerequisite , git cloning and running the iverilog file 
+
+VSD directory 
+```mkdir vsd```
+
+```cd vsd```
+
+```git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git```
+
+You can go into the directory and explore the files , typing ```ls``` will give all the files in the directory .
+
+The directory ```verilog_files``` has several verilog files example , for starters we will be loading and getting wave form for a mux .
+
+```iverilog good_mux.v tb_good_mux.v```
+
+This will compile the verilog file and test bench .
+
+the output will be a vcd file , you can see it by typing ```./a.out```
+
+To get the waveform type the below command 
+
+```gtkwave tb_good_mux.vcd```
+
+Common commands to compile the code and get the waveform :
+
+``` iverilog filename.v filename_tb.v```
+
+```gtkwave filename_tb.vcd```
+
+![Screenshot from 2023-08-31 21-31-15](https://github.com/AdrikaMohanty/asic_class/assets/84654826/683e1a5d-9091-4459-b993-8d64dfcbda33)
+
+![Screenshot from 2023-08-31 21-33-26](https://github.com/AdrikaMohanty/asic_class/assets/84654826/3c3eaa3f-7ec1-40c4-9328-4aaaa66fca23)
+
+We can observe when sel line is low i0 is copied to y and sel is high i1 is copied to y .
+
+### LAB 2:
+
+Code of testbench and design module 
+
+
+timescale 1ns / 1ps
+module tb_good_mux;
+	// Inputs
+	reg i0,i1,sel;
+	// Outputs
+	wire y;
+
+        // Instantiate the Unit Under Test (UUT)
+	good_mux uut (
+		.sel(sel),
+		.i0(i0),
+		.i1(i1),
+		.y(y)
+	);
+
+	initial begin
+	$dumpfile("tb_good_mux.vcd");
+	$dumpvars(0,tb_good_mux);
+	// Initialize Inputs
+	sel = 0;
+	i0 = 0;
+	i1 = 0;
+	#300 $finish;
+	end
+
+always #75 sel = ~sel;
+always #10 i0 = ~i0;
+always #55 i1 = ~i1;
+endmodule
+
+Design module :
+
+module good_mux (input i0 , input i1 , input sel , output reg y);
+always @ (*)
+begin
+	if(sel)
+		y <= i1;
+	else 
+		y <= i0;
+end
+endmodule
+
+
+## Introduction to yosys :
+
++ Yosys is a synthesizer 
++ Synthesis is the process of converting the RTL to netlist .
+  ![Screenshot from 2023-08-31 21-50-20](https://github.com/AdrikaMohanty/asic_class/assets/84654826/7e02c685-67d8-4250-9106-6b507a681302)
+
+  
+ + With the ```write_verilog``` command it gives the netlist in terms of standard cells .
+ + The netlist is the representation of the designs in terms of standard cells present in the ``` .lib``` file .
+
+
+## Introduction to logic synthesis :
+
++ Logic synthesis :The design written in Verilog or VHDL is converted in to netlist .
++ .lib : This contains the standard cells to implement any boolean logic functionalities .
+
+### Why do you need different flavours of gates ?
+To achieve max clock speed and the least delay , we need to have various flavours of gates .
+For ex to have no HOLD delays we need to have slower cells , hence we need to have different flavours of gates , slow as well as fast cells !
++ To charge/ discharge the capcitance we need transistors , these transistors decide the delays .
++ Wider transistors have lesser delay but consume more area and power
++ Narrow transistors have more delay but consume less area and performance .
++ Speed is a tradeoff with power and area .
+
+Therefore the selection of cells for synthesiser should be done carefully , this selection is given as guidance to the synthesizer in terms of "constraints" .
+
+### Yosys lab :
+
+
 </details>
 
