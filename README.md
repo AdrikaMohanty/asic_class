@@ -328,7 +328,128 @@ For ex to have no HOLD delays we need to have slower cells , hence we need to ha
 Therefore the selection of cells for synthesiser should be done carefully , this selection is given as guidance to the synthesizer in terms of "constraints" .
 
 ### Yosys lab :
+Interactive flow :
++ Invoke yosys by just typing yosys in the the command prompt.
++ Specify technology libraray to be used , by typing this :
+  ``` read_liberty -lib <PATH_TO_.libfile/sky130_fd_sc_hd__tt_025_1v80.lib>```
+  ![yosys1](https://github.com/AdrikaMohanty/asic_class/assets/84654826/03e2afce-31ce-4d15-9bd4-7e6b94e0dc19)
 
 
++ Specify all verilog file to be synthesized , if you have multiple files then specify all of them .
+  ![yosys2](https://github.com/AdrikaMohanty/asic_class/assets/84654826/399afab8-1047-47ed-b2e4-8b448331d04e)
+
++ ```synth -top good_mux``` for the synthesis of mux.
+
+  ![yosys3](https://github.com/AdrikaMohanty/asic_class/assets/84654826/e6399b01-d274-4527-b62b-9ded2e4d8202)
+
++ ```abc``` is command that will convert our RTL file in to netlist/gate available in the sky130 lib file
++ Now to see the graphical representation of netlist use the command ```show```
+
+  ![Screenshot from 2023-09-03 20-52-58](https://github.com/AdrikaMohanty/asic_class/assets/84654826/d10a6964-4c07-4bbd-90c5-ef65cb028cab)
++ To write the netlist to a verilog file use ```write_verilog <filename>.v ```
+
++ ```-noattr``` removes unwanted information from the mapped netlist
++With ```-noattr``` :
+
+![Screenshot from 2023-09-03 21-02-01](https://github.com/AdrikaMohanty/asic_class/assets/84654826/c81c3e76-4e03-4709-9cb4-2c961f991273)
+
+  
++Without ```-noattr```
+
+![Screenshot from 2023-09-03 21-07-12](https://github.com/AdrikaMohanty/asic_class/assets/84654826/a8e8132c-119a-4fac-ab75-841637127b8f)
+
+</details>
+
+<details>
+<summary>DAY2</summary>
+ When you analyze the lib file you will see many new terms , all of these can be explored in the videos
+	
+ +  ```sky130``` : 130nm technology node
+ +  ```fd``` : Foundary design
+ +  ```sc``` : standard cell
+ +  ```025C``` : temperature
+ +  CMOS technology
+ +  PVT : Process , voltage , temperature 
+ ## Two types of synthesis: Hierarchical synthesis & flat synthesis 
+ In hierarchial synthesis , submodules will be displayed as submodule block .
+ In Flat synthesis the sub module data isn't visible , only the top module will be visible .
+
+ the file used is ```multiple_modules.v``` it has two submodule and one main module 
+  ```read_liberty -lib /home/adrika/vsd/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+     read_verilog multiple_modules.v
+     synth -top multiple_modules
+     abc -liberty /home/adrika/vsd/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+     show multiple_modules
+
+```
+### Hierarchial Synthesis :
+If you observe in the netlist file the hierarchy is preserved .
+
+
+![Screenshot from 2023-09-03 22-03-06](https://github.com/AdrikaMohanty/asic_class/assets/84654826/60c4a224-da78-481f-b442-7ac15e02f17c)
+
+### Flattened synthesis :
+
+
+![Screenshot from 2023-09-03 22-08-56](https://github.com/AdrikaMohanty/asic_class/assets/84654826/f73dd814-a76e-4544-b041-e5bc33c96742)
+
+Module level synthesis preffered when we have multiple instances of same module or divide and conquer approach .
+
+## Different coding style of flops and why you need flops ??
+To avoid additional additional effects of glitches due to propagation delay of gates we will have flops at the end of each combinational block , the flops store the initial value and avoid the glitch .
+
+## D flip flop with asynchronous reset 
+
+Gtkwave :
+
+![Screenshot from 2023-09-03 22-48-40](https://github.com/AdrikaMohanty/asic_class/assets/84654826/0c109e4c-a2ca-4c4f-b261-ea014c3c0ce9)
+
+![Screenshot from 2023-09-03 23-17-57](https://github.com/AdrikaMohanty/asic_class/assets/84654826/89e6bbac-ca07-411f-9440-11c1902e810a)
+
+![Screenshot from 2023-09-03 23-22-20](https://github.com/AdrikaMohanty/asic_class/assets/84654826/10be3f17-f6ca-4edf-8b3b-031bc79af919)
+
+## D flip flop with asynchrounous set 
+
+Gtkwave :
+
+![Screenshot from 2023-09-03 22-54-16](https://github.com/AdrikaMohanty/asic_class/assets/84654826/f7cae465-e8dc-4cfa-9cc3-bb39578722a5)
+
+![Screenshot from 2023-09-03 23-25-10](https://github.com/AdrikaMohanty/asic_class/assets/84654826/27712500-e61b-4016-a668-f2736491ab2d)
+
+## D flip flop with synchronous reset 
+
+![Screenshot from 2023-09-03 23-13-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/591f6bf7-5113-44d2-a0eb-5dadf7c30ce1)
+
+![Screenshot from 2023-09-03 23-26-33](https://github.com/AdrikaMohanty/asic_class/assets/84654826/2ef72818-1f24-4783-84f4-5dbbf7afe248)
+
+![Screenshot from 2023-09-03 23-28-08](https://github.com/AdrikaMohanty/asic_class/assets/84654826/4237af4b-6014-4cc2-baac-fc2ab74fabad)
+
+## Interesting optimizations :
+### mult_2
+
+
+
+if we observe the synthesis no cells will be present
+
+![Screenshot from 2023-09-03 23-48-49](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5b92f820-1429-445a-9540-c666d67d2aa6)
+
+Now when you do ```abc``` it shows nothing to map since there is no standard cell to map
+
+![Screenshot from 2023-09-03 23-50-32](https://github.com/AdrikaMohanty/asic_class/assets/84654826/dcff975b-64b2-415e-a10f-59fcba036c06)
+![Screenshot from 2023-09-03 23-52-27](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fd2e364e-f49d-4ab4-8700-eff277b45a4e)
+
+multiplication with two is right shifting the number once 
+### mult_8
+
+![Screenshot from 2023-09-03 23-56-39](https://github.com/AdrikaMohanty/asic_class/assets/84654826/7ae073d7-d2bc-40f4-9b15-1a62eb95526f)
+
+
+
+netlist :
+
+
+![Screenshot from 2023-09-03 23-57-51](https://github.com/AdrikaMohanty/asic_class/assets/84654826/096f0381-7e78-4a6e-81b8-679059cae7fc)
+
+ 
 </details>
 
