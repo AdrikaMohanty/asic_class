@@ -327,7 +327,7 @@ For ex to have no HOLD delays we need to have slower cells , hence we need to ha
 
 Therefore the selection of cells for synthesiser should be done carefully , this selection is given as guidance to the synthesizer in terms of "constraints" .
 
-### Yosys lab :
+### Yosys lab : LAB 3
 Interactive flow :
 + Invoke yosys by just typing yosys in the the command prompt.
 + Specify technology libraray to be used , by typing this :
@@ -382,6 +382,7 @@ Interactive flow :
      show multiple_modules
 
 ```
+### LAB1 AND LAB2
 ### Hierarchial Synthesis :
 If you observe in the netlist file the hierarchy is preserved .
 
@@ -452,4 +453,130 @@ netlist :
 
  
 </details>
+<details>
+<summary>DAY3</summary>
 
+ Combinational and sequential logic optimizations
+
+ + Combinational logic optimization : Squeeze the logic to get the most optimized design , efficient in terms of area and power . 
+   + Constant propagation
+   + Boolean logic optimization
+ + Sequential logic optimization
+   + Basic
+     + Sequential constant propagation
+   + Advanced :
+     + Retiming
+     + State optimization
+     + Sequential logic cloning
+    
+### LAB:
+
++ Opt_check
+
+
+  ![Screenshot from 2023-09-04 10-11-39](https://github.com/AdrikaMohanty/asic_class/assets/84654826/90e022f2-ad79-4a91-8666-b1a5073a0734)
+
+  Command to do the combinational optimization is ```opt_clean -purge``` , shoud be done befor linking to abc
+
+
+
+   ![Screenshot from 2023-09-04 10-14-55](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5c1dee9a-5606-45da-9afc-c0014b96fdd9)
+
+
++ opt_check2
+
+
+   ![Screenshot from 2023-09-04 10-16-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/8671ffde-929b-40fd-bd8c-029055d94567)
+
+
+   ![Screenshot from 2023-09-04 10-16-51](https://github.com/AdrikaMohanty/asic_class/assets/84654826/a26bb33c-c70f-474b-9a0d-3b5a55de49c2)
+
+
++ opt_check3
+
+
+
+  ![Screenshot from 2023-09-04 10-26-32](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5ea7e460-6192-4e00-9848-88a246d232b6)
+
+
+
+   ![Screenshot from 2023-09-04 10-28-16](https://github.com/AdrikaMohanty/asic_class/assets/84654826/7fcb0df4-be4c-4413-8502-6db809a64756)
+
+
++ multiple_modules_opt
+
+
+  ![Screenshot from 2023-09-04 10-31-24](https://github.com/AdrikaMohanty/asic_class/assets/84654826/5db659a8-4979-4933-95eb-94624298d682)
+
+
+  ![Screenshot from 2023-09-04 10-33-07](https://github.com/AdrikaMohanty/asic_class/assets/84654826/7df13a15-818e-4420-b015-b0660c93f53b)
+
+for the multiple_modules_opt since it is a hierarchial design you need to flatten it before optimization .
+
+
+### Sequential optimization techniques 
+
++ dff_const1
+
+
+  ![Screenshot from 2023-09-04 11-03-01](https://github.com/AdrikaMohanty/asic_class/assets/84654826/64fa8f0d-f827-4cd0-9273-3baff5f7657a)
+
+
+
+![Screenshot from 2023-09-04 11-03-53](https://github.com/AdrikaMohanty/asic_class/assets/84654826/126e57ea-6793-48cb-a8bf-f3d3a86eb63e)
+
+
+
++ dff_const2
+
+  ![Screenshot from 2023-09-04 11-06-16](https://github.com/AdrikaMohanty/asic_class/assets/84654826/c2b16ee9-1907-42a9-b27d-d0ae56d36026)
+
+
++ dff_const3
+
+ ![Screenshot from 2023-09-04 11-19-11](https://github.com/AdrikaMohanty/asic_class/assets/84654826/dd2dfbf7-8b89-4d79-b10b-5d0d41e88ff8)
+
+
+ ![Screenshot from 2023-09-04 11-20-21](https://github.com/AdrikaMohanty/asic_class/assets/84654826/c854ad88-acb8-4282-b1eb-d05f6529ad4b)
+ 
+
+
++ dff_const4
+
+  ![Screenshot from 2023-09-04 11-07-28](https://github.com/AdrikaMohanty/asic_class/assets/84654826/c6a4cd74-04d1-49d6-945d-212db19fa4c3)
+
+
+ ![Screenshot from 2023-09-04 11-08-05](https://github.com/AdrikaMohanty/asic_class/assets/84654826/b5949085-b2a3-4bac-b8c0-b77e6885d8e2)
+
+
+
++ dff_const5
+
+  ![Screenshot from 2023-09-04 11-11-53](https://github.com/AdrikaMohanty/asic_class/assets/84654826/fbc0da28-c508-4881-96e0-872f185f288b)
+
+
+
+ ![Screenshot from 2023-09-04 11-17-33](https://github.com/AdrikaMohanty/asic_class/assets/84654826/9fadd954-9c53-4e8a-b593-22d2e134b628)
+
+
+### Optimization of unused output 
+
++ counter_opt
+
+  ![Screenshot from 2023-09-04 11-23-23](https://github.com/AdrikaMohanty/asic_class/assets/84654826/0e5147f4-a542-4cef-bf49-8ac407a88c4b)
+
+
+  ![Screenshot from 2023-09-04 11-26-17](https://github.com/AdrikaMohanty/asic_class/assets/84654826/cba8db47-1716-483f-a49a-fb7bb547bbcc)
+
+
+since 3 bit counter we would require only 3 flops , but output is only dependent on LSB so the other 2 are optimized . If there are primary out put and there are logic which are nowhere related to primary output then they will be all optimized .
+
+
++ counter_opt2
+
+  ![Screenshot from 2023-09-04 11-33-07](https://github.com/AdrikaMohanty/asic_class/assets/84654826/4d7662ef-f1ab-4e11-abe6-f8a15b75b63a)
+
+  ![Screenshot from 2023-09-04 11-34-07](https://github.com/AdrikaMohanty/asic_class/assets/84654826/2a632e97-7fd9-48c7-a810-4cac85666044)
+
+
+</details>
