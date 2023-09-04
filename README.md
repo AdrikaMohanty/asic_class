@@ -580,3 +580,67 @@ since 3 bit counter we would require only 3 flops , but output is only dependent
 
 
 </details>
+
+
+<details>
+
+ <summary>DAY4</summary>
+
+ ### GLS : Gate level simulation 
+
+ You give design in terms of netlist and testbench given to iverilog , the iverilog gived the vcd as output and loaded in gtkwave . 
+
+ Synthesis and simulation mismatch can have , these have various reasons such as missing sensitivity list , blocking and non blocking assignments , non-standard verilog coding 
+
++ ternary_operator_mux
+
+
+  ![Screenshot from 2023-09-04 11-46-33](https://github.com/AdrikaMohanty/asic_class/assets/84654826/af0faedb-a34a-46cf-8f99-415370017bdc)
+
+
+ ![Screenshot from 2023-09-04 11-48-42](https://github.com/AdrikaMohanty/asic_class/assets/84654826/917ad9f9-cf0e-4d12-8f68-7edacfef8d23)
+
+
+![Screenshot from 2023-09-04 12-05-28](https://github.com/AdrikaMohanty/asic_class/assets/84654826/6e1d4dc1-336b-420c-a758-91817a777524)
+
+
+post synthesis GLS o/p:
+
+![Screenshot from 2023-09-04 12-15-31](https://github.com/AdrikaMohanty/asic_class/assets/84654826/aa25b263-4cbe-44d3-9ef5-3f5e4b9a2cbb)
+
+since both are same the netlist is right 
+
++ bad_mux
+
+  befor simulation with netlist
+
+  ![Screenshot from 2023-09-04 12-18-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/1ae0ff34-cfcd-4176-8da5-4ba68d256fc9)
+
+ it shows as a flop behaviour not as mux 
+
+ ![Screenshot from 2023-09-04 12-20-19](https://github.com/AdrikaMohanty/asic_class/assets/84654826/9c31a0b1-4a51-4a46-add5-94c6f7ad406c)
+
+after GLS :
+
+![Screenshot from 2023-09-04 12-25-16](https://github.com/AdrikaMohanty/asic_class/assets/84654826/85e79721-5517-4072-99d9-2c7debfb79e9)
+
+
++ blocking_caveat
+
+  ![Screenshot from 2023-09-04 12-31-57](https://github.com/AdrikaMohanty/asic_class/assets/84654826/bfb33f05-3e8b-411c-9e01-ec01c29de611)
+
+
+  post synthesis :
+
+
+  ![Screenshot from 2023-09-04 12-34-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/26c38b87-60a2-4acd-9a6d-017a00a399ca)
+
+![Screenshot from 2023-09-04 12-37-20](https://github.com/AdrikaMohanty/asic_class/assets/84654826/390b9c94-69b2-4d6f-b96d-1c2c400b46bf)
+
+![Screenshot from 2023-09-04 12-40-04](https://github.com/AdrikaMohanty/asic_class/assets/84654826/f74da42c-3f43-4ecb-b1d2-6a5bfd5dc5be)
+
+
+here since it doenot show results based on previous inputs , because there was an imaginary flops created by blocking statement .
+
+
+</details>
